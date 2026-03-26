@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Habit Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌱 Daily Habit Tracker</h1>
+      <p class="subtitle" id="today-date"></p>
+    </header>
+
+    <section class="add-habit">
+      <form id="habit-form">
+        <input
+          type="text"
+          id="habit-input"
+          placeholder="Add a new habit…"
+          maxlength="60"
+          autocomplete="off"
+        />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section class="progress-bar-section" id="progress-section" hidden>
+      <div class="progress-label">
+        <span>Today's Progress</span>
+        <span id="progress-text">0 / 0</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </section>
+
+    <section class="habits-list">
+      <ul id="habit-list"></ul>
+      <p class="empty-state" id="empty-state">No habits yet. Add one above! 👆</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

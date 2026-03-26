@@ -1,0 +1,224 @@
+/* ── Reset & base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f6fb;
+  --card:      #ffffff;
+  --primary:   #6c63ff;
+  --primary-h: #574fd6;
+  --success:   #22c55e;
+  --danger:    #ef4444;
+  --text:      #1e1e2e;
+  --muted:     #6b7280;
+  --border:    #e5e7eb;
+  --radius:    12px;
+  --shadow:    0 4px 20px rgba(0,0,0,.08);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ── Layout ───────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Header ───────────────────────────────────────── */
+header { text-align: center; }
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -.5px;
+}
+
+.subtitle {
+  margin-top: .25rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* ── Add-habit form ───────────────────────────────── */
+.add-habit {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.25rem;
+}
+
+#habit-form {
+  display: flex;
+  gap: .75rem;
+}
+
+#habit-input {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem .9rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s;
+}
+
+#habit-input:focus { border-color: var(--primary); }
+
+#habit-form button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+  white-space: nowrap;
+}
+
+#habit-form button:hover { background: var(--primary-h); }
+
+/* ── Progress bar ─────────────────────────────────── */
+.progress-bar-section {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.25rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: .9rem;
+  color: var(--muted);
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+.progress-bar {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--success));
+  border-radius: 999px;
+  width: 0%;
+  transition: width .4s ease;
+}
+
+/* ── Habits list ──────────────────────────────────── */
+.habits-list {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: .5rem 0;
+  min-height: 60px;
+}
+
+#habit-list { list-style: none; }
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .85rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+
+.habit-item:last-child { border-bottom: none; }
+.habit-item:hover { background: #fafafa; }
+
+/* checkbox */
+.habit-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+  font-size: .85rem;
+}
+
+.habit-check.done {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
+
+/* text area */
+.habit-info { flex: 1; }
+
+.habit-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.habit-name.done { text-decoration: line-through; color: var(--muted); }
+
+.habit-streak {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-top: .1rem;
+}
+
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  background: #fff7ed;
+  color: #c2410c;
+  border-radius: 999px;
+  padding: 0 .5rem;
+  font-weight: 600;
+  font-size: .75rem;
+}
+
+/* delete button */
+.habit-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--border);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: .2rem .4rem;
+  border-radius: 6px;
+  transition: color .2s, background .2s;
+}
+
+.habit-delete:hover { color: var(--danger); background: #fef2f2; }
+
+/* empty state */
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem 1rem;
+  font-size: .95rem;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 400px) {
+  header h1 { font-size: 1.5rem; }
+  #habit-form { flex-direction: column; }
+}
